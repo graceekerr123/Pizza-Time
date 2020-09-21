@@ -1,11 +1,5 @@
 """This is a pizza ordering program."""
-from validationsforsprint2 import validate_quantity, validate_index
-
-
-def get_string(m):
-    my_string = input(m)
-    return my_string
-
+from validationsoption2 import get_one_string2, validate_quantity, validate_index
 
 def print_list(plist):
     print("Pizza Menu")
@@ -40,7 +34,7 @@ def ordering(olist, plist):
         olist.append(temp_list)
         output = "You have ordered {} of the {} pizza".format(quantity_pizza, chosen_type_pizza)
         print(output)
-        another_pizza = get_string("Would you like to order another pizza? (y/n)-> ")
+        another_pizza = get_one_string2("Would you like to order another pizza? (y/n)-> ", ["y", "n"])
         if another_pizza == "n":
             return None
         elif another_pizza != "y":
@@ -74,17 +68,14 @@ def menu():
         ("Q", "Quit")
     ]
 
-    longpizza_list = [
+    actualpizza_list = [
         ("18.5", "Cheese"),
         ("18.5", "Pepperoni"),
         ("18.5", "BBQ Chicken"),
         ("18.5", "Vege lovers"),
         ("18.5", "Meatlovers"),
         ("22", "4 Cheese"),
-        ("22", "Pinapple Supreme"),
-        ("22", "Extra Meatlovers"),
-        ("22", "Double Vege Delight"),
-        ("22", "Tusan Dream")
+        ("22", )
     ]
 
     order = [
@@ -97,7 +88,7 @@ def menu():
     run = True
     while run == True:
         print_menu(my_menu)
-        option = get_string("Please enter an option: ->")
+        option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "Q"])
         print(option)
         print("." * 60)
         if option == "P":
