@@ -2,6 +2,7 @@
 # import validation functions from another file
 from validationsoption2 import get_one_string2, validate_quantity, validate_index
 
+
 def print_list(plist):
     """
     Print pizza list with no index numbers
@@ -19,7 +20,7 @@ def print_list(plist):
 def print_menu(pmenu):
     """
     Print out the menu options for the user
-   
+
     :param pmenu: list (with option letter and option description)
     this is a multidimensional list of [str, str]
     :return: None
@@ -67,11 +68,16 @@ def ordering(olist, plist):
     run = True
     while run == True:
         # get user choice for the index number from the menu
-        type_pizza = validate_index("Please chose the index number for the pizza you would like to order: -> ", 0, len(plist)-1, "This is not a valid index number, it is too low. Please enter a larger index number", "This entry is too big and/or too many digits, please try again and enter a smaller index number.")
+        type_pizza = validate_index("Please chose the index number for the pizza you would like to order: -> ", 0,
+                                    len(plist) - 1,
+                                    "This is not a valid index number, it is too low. Please enter a larger index number",
+                                    "This entry is too big and/or too many digits, please try again and enter a smaller index number.")
         # get the pizza name from the pizza list using the index entered
         chosen_type_pizza = plist[type_pizza][1]
         # get quantity of the pizza
-        quantity_pizza = validate_quantity("How many of the {} pizza would you like to order: ->".format(chosen_type_pizza), 1, 30, "Sorry you must order at least one pizza, please order a quantity bigger than 0")
+        quantity_pizza = validate_quantity(
+            "How many of the {} pizza would you like to order: ->".format(chosen_type_pizza), 1, 30,
+            "Sorry you must order at least one pizza, please order a quantity bigger than 0")
         # collect cost from the pizza list
         cost = plist[type_pizza][0]
         # calculate cost of the pizza order
@@ -98,9 +104,6 @@ def review_order(olist):
     this is a multidimensional list of [int, str]
     :return: None
     """
-    # declaring two variables as 0
-    totalcost = 0
-    totalquantity = 0
     # notifies the user that they haven't ordered yet
     # notifies user that it is necessary to order pizza before reviewing their order
     if len(olist) == 0:
@@ -108,14 +111,21 @@ def review_order(olist):
     # prints out the ordered pizza's and quantities for the user
     else:
         print("Here is your order so far:")
-        print("Item number   Pizza               Amount     Cost")
+        print("Pizza          Amount")
         # prints the customer order list
         for i in range(0, len(olist)):
-            output = "{: <12}  {: <18}  {: <9}  ${}0".format(i, olist[i][0], olist[i][1], olist[i][2])
+            output = "{: <12} - {}".format(olist[i][0], olist[i][1])
             print(output)
+
+
+def receipt(olist):
+    totalcost = 0
+    totalquantity = 0
     for i in range(0, len(olist)):
         totalcost += olist[i][2]
         totalquantity += olist[i][1]
+        output = "{:5} : {:<10} : {:<5} which costs ${}0".format(i, olist[i][0], olist[i][1], olist[i][2])
+        print(output)
     output = "You have ordered a total of {} pizzas".format(totalquantity)
     print(output)
     output = "Total Cost: ${}0".format(totalcost)
@@ -175,6 +185,7 @@ def menu():
             ordering(order, practice_pizza_list)
         elif option == "R":
             review_order(order)
+            receipt(order)
         elif option == "Q":
             print("Thank you")
             run = False

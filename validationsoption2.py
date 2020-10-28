@@ -90,29 +90,29 @@ def get_one_string2(m, char_list):
 
 
 
-if __name__ == "__main__":
-    another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
-    print(another)
 
-    menu_option = validate_string("Please enter an option: ->", 1, 1)
-    print(menu_option)
 
 
 
 
 if __name__ == "__main__":
+    # another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
+    # print(another)
+    #
+    # menu_option = validate_string("Please enter an option: ->", 1, 1)
+    # print(menu_option)
     get_one_string2("Please enter item off the menu", ["y", "n"])
-    get_one_string2("Please enter item off the menu", ["y", "n"])
-    get_one_string2("Please enter item off the menu", ["y", "n"])
-
-    quantity_index = validate_index("Please enter your index", 0, 5, "e1", "e2")
-    print(quantity_index)
-
-    quantity_pizza = validate_quantity("Please enter your number", 0, 30, "e1")
-    print(quantity_pizza)
-
-    another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
-    print(another)
-
-    another = validate_string("Please enter an option: ->", 1, 1)
-    print(another)
+    # get_one_string2("Please enter item off the menu", ["y", "n"])
+    # get_one_string2("Please enter item off the menu", ["y", "n"])
+    #
+    # quantity_index = validate_index("Please enter your index", 0, 5, "e1", "e2")
+    # print(quantity_index)
+    #
+    # quantity_pizza = validate_quantity("Please enter your number", 0, 30, "e1")
+    # print(quantity_pizza)
+    #
+    # another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
+    # print(another)
+    #
+    # another = validate_string("Please enter an option: ->", 1, 1)
+    # print(another)
