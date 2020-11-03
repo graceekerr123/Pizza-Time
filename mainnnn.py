@@ -183,7 +183,7 @@ def update(olist, plist):
             error_one = "This is not a valid item number, it is too low. Please enter a larger item number"
             error_two = "This entry is too big or too many digits, please try again and enter a smaller item number."
             item = validate_index(message, 0, len(olist) - 1, error_one, error_two)
-            print("Now, you have {} {} pizza/s in your order".format(olist[item][1], olist[item][0]))
+            print("Currently, you have {} {} pizza/s in your order".format(olist[item][1], olist[item][0]))
             message = "How many {} pizzas would you like to order?: ".format(olist[item][0])
             error_one = "Sorry you must have a final order at least one pizza, please order a quantity bigger than 0"
             update_quantity = validate_quantity(message, 0, 30, error_one)

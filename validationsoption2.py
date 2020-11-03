@@ -1,6 +1,7 @@
 def validate_index(m, min, max, minerror, maxerror):
     """
-    To ensure a valid integer is returned (when the index of the pizza is asked)
+    To ensure a valid integer is returned (when the index of the pizza is asked).
+
     tests for inclusive minimum and maximum
     5 arguments string message int min int max string minor error string max error
     it will test the user input comprehensively
@@ -31,7 +32,8 @@ def validate_index(m, min, max, minerror, maxerror):
 
 def validate_quantity(m, min, max, minerror):
     """
-    To ensure a valid integer is returned (when asked for the quantity of pizza)
+    To ensure a valid integer is returned (when asked for the quantity of pizza).
+
     tests for inclusive minimum and maximum
     5 arguments string message int min int max string minor error string max error
     it will test the user input comprehensively
@@ -66,16 +68,21 @@ def validate_quantity(m, min, max, minerror):
 
 def get_one_string2(m, char_list):
     '''
-    get a single character input from the user
-    check that the input is part of a passed character list
-    rerequest user input if the input is not acceptable
+    get a single character input from the user.
+
+    check that the input is part of a passed character list.
+    rerequest user input if the input is not acceptable.
 
     :param m:
-    :param char_list:
+    :param char_list: list
     :return:
     '''
     while True:
         user_input = input(m)
+        # test for empty string
+        if len(user_input) == 0:
+            print("You have not entered any value. Please try again.")
+            continue
         # preparing the user input before check if it should be accepted
         user_input = user_input.strip()
         user_input = user_input.upper()
