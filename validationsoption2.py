@@ -16,18 +16,18 @@ def validate_index(m, min, max, minerror, maxerror):
     """
     while True:
         try:
-            type_pizza = int(input(m))
+            user_input = int(input(m))
         except ValueError:
             print("unfortunately your entry is not valid. A whole number is needed, please try again")
             continue
-        if type_pizza < min:
+        if user_input < min:
             print(minerror)
             continue
-        elif type_pizza > max:
+        elif user_input > max:
             print(maxerror)
             continue
         else:
-            return type_pizza
+            return user_input
 
 
 def validate_quantity(m, min, max, minerror):
@@ -56,7 +56,7 @@ def validate_quantity(m, min, max, minerror):
             print(minerror)
             continue
         elif user_input > max:
-            sure = get_one_string2("This is a lot of pizza, are you sure you meant to order {} pizzas? (y/n)".format(user_input), 1, 1)
+            sure = get_one_string2("This is a lot of pizza, are you sure you meant to order {} pizzas? (y/n)".format(user_input), ["Y", "N"])
             if sure == "y":
                 return user_input
             else:
@@ -75,7 +75,7 @@ def get_one_string2(m, char_list):
 
     :param m:
     :param char_list: list
-    :return:
+    :return: str
     '''
     while True:
         user_input = input(m)
@@ -98,12 +98,7 @@ def get_one_string2(m, char_list):
 
 def validate_string(m, min, max):
     while True:
-        # WHAT DOES THE TRY MEAN?????
-        try:
-            user_input = input(m).upper()
-        except ValueError:
-            print("unfortunately your entry is not valid. A word is needed, please try again")
-            continue
+        user_input = input(m)
         if len(user_input) < min:
             print("Your answer is too short. Please type in an appropriate response.")
             continue
@@ -114,9 +109,25 @@ def validate_string(m, min, max):
             return user_input
 
 
+def validate_number(m, min, max):
+    while True:
+        # checks that the input is a integer
+        try:
+            user_input = int(input(m))
+        except ValueError:
+            print("Your entry must be a number. Please reenter.")
+            continue
+        if user_input < min:
+            print("Your entry is too small, it must be at least {}. Please try again.".format(min+1))
+        elif user_input > len(max):
+            print("Your entry is too big, or you have entered {} or less. \n"
+                  "Please try again.".format(max))
+        else:
+            return user_input
+
 if __name__ == "__main__":
-    name = validate_string("enter your name", 3, 10)
-    print(name)
+    #name = validate_string("enter your name", 3, 10)
+    #print(name)
 
 
     # another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
@@ -128,7 +139,7 @@ if __name__ == "__main__":
     # get_one_string2("Please enter item off the menu", ["y", "n"])
     # get_one_string2("Please enter item off the menu", ["y", "n"])
     #
-    # quantity_index = validate_index("Please enter your index", 0, 5, "e1", "e2")
+    quantity_index = validate_index("Please enter your index", 1, 999, "too small", "too big")
     # print(quantity_index)
     #
     # quantity_pizza = validate_quantity("Please enter your number", 0, 30, "e1")

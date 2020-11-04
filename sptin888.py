@@ -252,21 +252,97 @@ def cancel(olist):
             print("Validation Error 303")
             # IS THIS CONTINUE NECESSARY??
 
-def details():
+
+def details(d):
+    """
+    Get customer details.
+
+    Asking a series of questions to get all the customers details.
+
+    :param d: list
+    this is a multidimensional list of [str, str] (ect)
+    :return: int (amount of delivery charge)
+    """
+    # making sure the details list is clear
+    # if a customer has already entered details, they will be deleted
+    d.clear()
+    service_menu = [
+        ("P", "Pick up"),
+        ("D", "Delivery (a $3 charge)")
+    ]
+    # program always asks for customer's name
     print("Pizza Time needs your details for your order")
-    name = validate_string()
+    message = "What is your name"
+    name = validate_string(message, 3, 15)
+    # give service options
+    run = True
+    while run is True:
+        print("Receive order options:")
+        for i in range(0, len(service_menu)):
+            output = "{}: {}".format(service_menu[i][0], service_menu[i][1])
+            print(output)
+            run = False
+    message = "Please choice an option: (p/d) -> "
+    order_receive = get_one_string2(message, ["P", "D"])
+    if order_receive == "P":
+        receive = "Pick up"
+        print("The pickup option has been selected")
+        print("Please pickup at the Wellington Central Branch")
+        pickup_information = [("Service", receive),
+                              ("Name", name)]
+        # the service option and name of customer can be used in other functions
+        d.extend(pickup_information)
+        # return amount of extra charges
+        return 0
+    elif order_receive == "D":
+        receive = "Delivery"
+        message = "Please enter your street name: -> "
+        street = validate_string(message, 1, 50)
+        message = "Please enter your street number: -> "
+        street_number = validate_index((message, 1, 3, "too small", "Too big"))
+        message = "Please enter your suburb: -> "
+        suburb = validate_string(message, 3, 15)
+        message = "Please enter your phone number: (XXX XXX XXXX) -> "
+        phone_number = validate_string(message, 10, 12)
+        print(street)
+        print(street_number)
+        print(suburb)
+        print(phone_number)
+        pickup_information = [("Service", receive),
+                              ("Name", name),
+                              ("Street", "{} {}".format(street_number, street)),
+                              ("Suburb", suburb),
+                              ("Phone Number", phone_number)]
+        # the service option, name, street address and phone number of customer can be used in other functions
+        d.extend(pickup_information)
+        # return amount of extra charges
+        return 0
 
 
-def print details():
+def print_details(d):
+    """
+    Print out customer details.
+
+    :param d: list
+    this is a multidimensional list of [str, str] (ect)
+    :return: None
+    """
+    print("Here are your details:")
+    for i in range(len(d)):
+        output = "{:20} : {:20}".format((d[i][0]), d[i][1])
+        print(output)
+    print(50 * "-")
 
 
-
-
-def finalise(olist):
-    if len(olist) == 0:
-        print("Your order is empty, start ordering!")
-        return None
-
+#def finalise(olist, s, d):
+    #run = True
+    #while run is True
+        #if len(olist) == 0:
+            #print("Your order is empty, start ordering!")
+            return None
+        elif len(d) == 0:
+            print("Please fill our your details")
+            continue
 
 def menu():
     """
@@ -293,8 +369,8 @@ def menu():
         ("R", "Review Order"),
         ("U", "Update"),
         ("D", "Details"),
+        ("F", "Finalise Order")
         ("C", "Cancel Order"),
-        ("F", "Finalise Order"),
         ("Q", "Quit")
     ]
 
@@ -314,11 +390,17 @@ def menu():
 
     order = []
 
+    details_list = []
+    service_charge = 0
 
+    new_order = True
     run = True
     while run is True:
+        if new_order is True:
+            "Welcome to Pizza Time. Please place your order by pressing 'O'"
+            new_order = False
         print_menu(my_menu)
-        option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "D", "C", "Q"])
+        option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "D", "F", "C", "Q"])
         print("." * 60)
         if option == "P":
             print_list(actualpizza_list)
@@ -329,9 +411,19 @@ def menu():
         elif option == "U":
             update(order, actualpizza_list)
         elif option == "D":
-            details(order)
+            service_charge = details(details_list)
+            print_details(details_list)
+            print(service_charge)
+        elif option == "F":
+            finalise(order, service_charge, details_list)
         elif option == "C":
-            cancel(order)
+            # notifies the customer if canceling the order is not an option
+            # when there's no order, the order cannot be canceled
+            if len(order) == 0:
+                print("You have no order to cancel")
+            else:
+                # the return of true/false will determine whether the new_order loop runs
+                new_order = cancel(order)
         elif option == "Q":
             print("Thank you")
             run = False
