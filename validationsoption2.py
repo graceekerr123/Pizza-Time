@@ -96,19 +96,35 @@ def get_one_string2(m, char_list):
             print("Your input is not part of the acceptable list, please reenter.")
 
 
-
-
-
-
+def validate_string(m, min, max):
+    while True:
+        # WHAT DOES THE TRY MEAN?????
+        try:
+            user_input = input(m).upper()
+        except ValueError:
+            print("unfortunately your entry is not valid. A word is needed, please try again")
+            continue
+        if len(user_input) < min:
+            print("Your answer is too short. Please type in an appropriate response.")
+            continue
+        elif len(user_input) > max:
+            print("Your answer is too long. Please type in an appropriate response.")
+            continue
+        else:
+            return user_input
 
 
 if __name__ == "__main__":
+    name = validate_string("enter your name", 3, 10)
+    print(name)
+
+
     # another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
     # print(another)
     #
     # menu_option = validate_string("Please enter an option: ->", 1, 1)
     # print(menu_option)
-    get_one_string2("Please enter item off the menu", ["y", "n"])
+    #get_one_string2("Please enter item off the menu", ["y", "n"])
     # get_one_string2("Please enter item off the menu", ["y", "n"])
     # get_one_string2("Please enter item off the menu", ["y", "n"])
     #
