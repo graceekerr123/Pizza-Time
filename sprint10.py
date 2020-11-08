@@ -44,7 +44,6 @@ def duplicate(olist, p):
                 return True
             elif choice is "N":
                 print("The {} pizzas will not be updated", format(olist[i][0]))
-                # OR IS THIS RETURN FALSE
                 return False
             else:
                 print("Validation Error 303, please try this option again with a appropriate response.")
@@ -76,9 +75,8 @@ def ordering(olist, plist):
         type_pizza = validate_index(message, 0, len(plist) - 1, error_one, error_two)
         # get the pizza name from the pizza list using the index entered
         chosen_type_pizza = plist[type_pizza][1]
-
         scan = duplicate(olist, chosen_type_pizza)
-        #
+        # if reuturn from scan is true, it prints the dash so it can go loop through again
         if scan:
             print(100 * "-")
         # if no duplicate is found, then continue on with order
@@ -101,6 +99,80 @@ def ordering(olist, plist):
             another_pizza = get_one_string2("Would you like to order another pizza? (y/n)-> ", ["Y", "N"])
             if another_pizza == "N":
                 return None
+
+
+
+# OPTION 1
+
+
+
+
+        else:
+            final = validate_y_and_n("This is the current status of your order, are you happy to confirm it? \n"
+                                     "Enter 'y' for 'yes' and 'n' for 'no': ", 1, 1)
+            # The user confirms their order
+            if final in ["Y", "y"]:
+                # Confirmation messages
+                print("Thank you for shopping with Pizzaroo!!")
+                print("Enjoy your pizzas :)")
+                # The user's pizza order and information is cleared
+                customer_pizzas.clear()
+                customer_details.clear()
+                # The 'start_new_order' loop repeats
+                start_new_order = customer_information(customer_details)
+            # The user does not confirm their order
+            elif final in ["N", "n"]:
+                # Confirmation message
+                # No further changes are made
+                print("Your order has not been completed.")
+            # The user enters an inappropriate answer
+            else:
+                print("Please enter either 'y' for yes or 'n' for no")
+
+
+
+# OPTION 2
+if option == "F":
+    run = True
+    while run == True
+        if len(olist) == 0:
+            print("Your order is empty, please order!")
+            # is this right?
+            return None
+        elif len(d) == 0:
+            print("Please fill our your details")
+            details(details_list)
+            print_details(details_list)
+            # is this right?
+            # reloop through
+            continue
+        else:
+            print_details(details_list)
+            review_order(order, False)
+
+    if len(olist) == 0:
+        print("Your order is empty, start ordering!")
+        # is this right?
+        return None
+    elif len(d) == 0:
+        print("Please fill our your details")
+        details(details_list)
+        print_details(details_list)
+        # is this right?
+        #reloop through
+        continue
+    else:
+        print_details(details_list)
+        review_order(order, False)
+        finalise(order, service_charge, details_list)
+
+
+if option == F:
+    finalise(order, service_charge, details_list)
+
+
+
+
 
 
 

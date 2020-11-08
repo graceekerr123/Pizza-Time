@@ -1,6 +1,6 @@
 """This is a pizza ordering program."""
 # import validation functions from another file
-from validationsoption2 import get_one_string2, validate_quantity, validate_index
+from validationsoption2 import get_one_string2, validate_quantity, validate_index, validate_string, validate_number
 
 
 def print_list(plist):
@@ -52,6 +52,30 @@ def print_indexlist(plist):
         print(output)
 
 
+def duplicate(olist, p):
+    print("d")
+    for i in range(0, len(olist)):
+        # checks to see if the pizza type entered is one of a pizza already ordered
+        if p is olist[i][0]:
+            message = "You have already ordered {} of this pizza type, would you like to change the quantity ".format(olist[i][1])
+            choice = get_one_string2(message, ["Y", "N"])
+            if choice is "Y":
+                message = "How many {} pizzas would you like to order?: ".format(olist[i][0])
+                error_one = "Sorry you must have a final order at least one pizza, please order a quantity bigger than 0"
+                update_quantity = validate_quantity(message, 0, 30, error_one)
+                olist[i][1] = update_quantity
+                print("You now have {} {} pizzas".format(update_quantity, p))
+                # end of conditional statement
+                return True
+            elif choice is "N":
+                print("The {} pizzas will not be updated".format(olist[i][0]))
+                return False
+            else:
+                print("Validation Error 303, please try this option again with a appropriate response.")
+    # no duplicate found
+    return None
+
+
 def ordering(olist, plist):
     """
     Get customer's choice of pizza's and number of pizza's they want to order.
@@ -76,20 +100,30 @@ def ordering(olist, plist):
         type_pizza = validate_index(message, 0, len(plist) - 1, error_one, error_two)
         # get the pizza name from the pizza list using the index entered
         chosen_type_pizza = plist[type_pizza][1]
-        # get quantity of the pizza
-        message = "How many of the {} pizza would you like to order: ->".format(chosen_type_pizza)
-        error_one = "Sorry you must order at least one pizza, please order a quantity bigger than 0"
-        quantity_pizza = validate_quantity(message, 1, 30, error_one)
-        # collect cost from the pizza list
-        cost = plist[type_pizza][0]
-        # calculate cost of the pizza order
-        order_cost = cost * quantity_pizza
-        # create list and then append to the order list
-        temp_list = [chosen_type_pizza, quantity_pizza, order_cost]
-        olist.append(temp_list)
-        # confirmation message
-        output = "You have ordered {} of the {} pizza".format(quantity_pizza, chosen_type_pizza)
-        print(output)
+        scan = duplicate(olist, chosen_type_pizza)
+        # scan can return true, false or None
+        # if reuturn from scan is true, it prints the dash so it can go loop through again
+        if scan is True:
+            print(100 * "-")
+        # if no duplicate is found, then continue on with order
+        elif scan is False:
+            return None
+        # if return None, there is no duplicate, order as normal
+        else:
+            # get quantity of the pizza
+            message = "How many of the {} pizza would you like to order: ->".format(chosen_type_pizza)
+            error_one = "Sorry you must order at least one pizza, please order a quantity bigger than 0"
+            quantity_pizza = validate_quantity(message, 1, 30, error_one)
+            # collect cost from the pizza list
+            cost = plist[type_pizza][0]
+            # calculate cost of the pizza order
+            order_cost = cost * quantity_pizza
+            # create list and then append to the order list
+            temp_list = [chosen_type_pizza, quantity_pizza, order_cost]
+            olist.append(temp_list)
+            # confirmation message
+            output = "You have ordered {} of the {} pizza".format(quantity_pizza, chosen_type_pizza)
+            print(output)
         # request to add more pizza's
         another_pizza = get_one_string2("Would you like to order another pizza? (y/n)-> ", ["Y", "N"])
         if another_pizza == "N":
@@ -102,6 +136,7 @@ def review_order(olist, o):
 
     :param olist: list (user's ordered pizza's and quantities are added to this list)
     this is a multidimensional list of [int, str]
+    :param o: bool
     :return: None
     """
     # declaring two variables as 0
@@ -128,6 +163,7 @@ def review_order(olist, o):
             print(output)
             output = "Total Cost: ${}0".format(totalcost)
             print(output)
+        return True
 
 
 def update(olist, plist):
@@ -257,6 +293,164 @@ def cancel(olist):
             print("Validation Error 303")
 
 
+def details(d):
+    """
+    Get customer details.
+
+    Asking a series of questions to get all the customers details.
+
+    :param d: list (containing all the details about the customer)
+    this is a multidimensional list of [str, str] (ect)
+    :return: int (amount of delivery charge)
+    """
+    if len(d) > 0:
+        print("Your previous detail entry will be deleted so you can reenter them")
+    # making sure the details list is clear
+    # if a customer has already entered details, they will be deleted
+    d.clear()
+    service_menu = [
+        ("P", "Pick up"),
+        ("D", "Delivery (a $3 charge)")
+    ]
+    # program always asks for customer's name
+    print("Pizza Time needs your details for your order")
+    message = "What is your name? -> "
+    name = validate_string(message, 3, 15)
+    # give service options
+    run = True
+    while run is True:
+        print("Receive order options:")
+        for i in range(0, len(service_menu)):
+            output = "{}: {}".format(service_menu[i][0], service_menu[i][1])
+            print(output)
+            run = False
+    message = "Please choice an option: (p/d) -> "
+    order_receive = get_one_string2(message, ["P", "D"])
+    if order_receive == "P":
+        receive = "Pick up"
+        print("The pickup option has been selected")
+        print("Please pickup at the Wellington Central Branch")
+        pickup_information = [("Service", receive),
+                              ("Name", name)]
+        # the service option and name of customer can be used in other functions
+        d.extend(pickup_information)
+        # return amount of extra charges
+        return 0
+    elif order_receive == "D":
+        receive = "Delivery"
+        message = "Please enter your street name: -> "
+        street = validate_string(message, 1, 50)
+        message = "Please enter your street number: -> "
+        error_one = "Your street number is not valid as it's too small. Enter a number bigger than 0."
+        error_two = "Your street number is not valid as it's too big. Enter a number 3 digits or less."
+        street_number = validate_index(message, 1, 999, error_one, error_two)
+        message = "Please enter your suburb: -> "
+        suburb = validate_string(message, 3, 15)
+        message = "Please enter your phone number: (XXX XXX XXXX) -> "
+        phone_number = validate_string(message, 10, 12)
+        print(street)
+        print(street_number)
+        print(suburb)
+        print(phone_number)
+        pickup_information = [("Service", receive),
+                              ("Name", name),
+                              ("Street", "{} {}".format(street_number, street)),
+                              ("Suburb", suburb),
+                              ("Phone Number", phone_number)]
+        # the service option, name, street address and phone number of customer can be used in other functions
+        d.extend(pickup_information)
+        print("If you want to change your details, please chose the Details option again, and reenter all of them.")
+        print(100 * "-")
+        # return amount of extra charges
+        return 3
+    else:
+        print("Validation Error 303")
+
+
+def print_details(d, o):
+    """
+    Print out customer details.
+
+    :param d: list (containing all the details about the customer)
+    this is a multidimensional list of [str, str] (ect)
+    :return: None
+    """
+    if o is True:
+        print("Here are your details:")
+    for i in range(len(d)):
+        output = "{:20} : {:20}".format((d[i][0]), d[i][1])
+        print(output)
+    print(50 * "-")
+
+
+def finalise(olist, s, d):
+    """
+    Finalise the customer's order.
+
+    Asks user to confirm that they want to complete their order
+    Loops until it's certain at least one pizza and details have been inputed
+
+
+    :param olist: list (user's ordered pizza's and quantities are added to this list)
+    this is a multidimensional list of [int, str]
+    :param s: int (the price of their preferred service (either delivery or pickup))
+    :param d:  list (containing all the details about the customer)
+    this is a multidimensional list of [str, str] (ect)
+    :return: bool
+    True or False to determine
+    """
+    totalcost = 0
+    run = True
+    while run is True:
+        # tests the length of the order list and customer details list
+        # checks that there is a order to finalise before continuing
+        # # get customer to order/enter details if they haven't already
+        if len(olist) == 0:
+            print("Your order is empty, please order!")
+            # back to main menu
+            return None
+        elif len(d) == 0:
+            print("You have not completed your details")
+            message = "Do you still want to finalise your order? (y/n) -> "
+            confirm = get_one_string2(message, ["Y", "N"])
+            if confirm == "N":
+                return None
+            s = details(d)
+            # re-loop through
+            continue
+        else:
+            # sum the total cost with pizza order costs and service fee
+            for i in range(0, len(olist)):
+                totalcost += olist[i][2]
+            totalcost += s
+            # print customer details
+            print_details(d, True)
+            print(50 * "-")
+            # print the ordered pizza's
+            # the second argument is set to False so part of the function doesn't run
+            review_order(olist, False)
+            print(50 * "-")
+            output = "Service charge ={:11} ${:<15.2f}".format(" ", s)
+            print(output)
+            gst = totalcost * 0.15
+            output = "GST(included):{:13} ${:<15.2f}".format(" ", gst)
+            print(output)
+            output = "Total Cost: {:15} ${:<15.2f}".format(" ", totalcost)
+            print(output)
+            message = "Are you sure you want to confirm this order? (y/n) -> "
+            confirm = get_one_string2(message, ["Y", "N"])
+            if confirm == "Y":
+                # clears the current customer's order and details to prepare for a new order
+                olist.clear()
+                d.clear()
+                print("Thank you for ordering at Pizza Time :)")
+                return True
+                menu()
+            if confirm == "N":
+                print("Your order is not finalised")
+                return False
+
+
 def menu():
     """
     Loop to run the main option menu.
@@ -281,7 +475,9 @@ def menu():
         ("O", "Order"),
         ("R", "Review Order"),
         ("U", "Update"),
+        ("D", "Details"),
         ("C", "Cancel Order"),
+        ("F", "Finalise"),
         ("Q", "Quit")
     ]
 
@@ -301,14 +497,20 @@ def menu():
 
     order = []
 
+    details_list = []
+
+    service_charge = 0
+
     new_order = True
     run = True
     while run is True:
         if new_order is True:
-            "Welcome to Pizza Time. Please place your order by pressing 'O'"
+            print("Welcome to Pizza Time. Please place your order by pressing 'O'")
+            # should i also put order = [] here?
+            service_charge = 0
             new_order = False
         print_menu(my_menu)
-        option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "C", "Q"])
+        option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "D", "F", "C", "Q"])
         print("." * 60)
         if option == "P":
             print_list(actualpizza_list)
@@ -316,8 +518,19 @@ def menu():
             ordering(order, actualpizza_list)
         elif option == "R":
             review_order(order, True)
+            # when there's nothing in the details list
+            if len(details_list) == 0:
+                print_details(details_list, False)
+            else:
+                print_details(details_list, True)
         elif option == "U":
             update(order, actualpizza_list)
+        elif option == "D":
+            # returns either 0 or 3 depending on if the customer wanted pick up or delivery
+            service_charge = details(details_list)
+            print_details(details_list, True)
+        elif option == "F":
+            new_order = finalise(order, service_charge, details_list)
         elif option == "C":
             # notifies the customer if canceling the order is not an option
             # when there's no order, the order cannot be canceled
