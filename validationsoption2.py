@@ -67,7 +67,7 @@ def validate_quantity(m, min, max, minerror):
 
 
 def get_one_string2(m, char_list):
-    '''
+    """
     get a single character input from the user.
 
     check that the input is part of a passed character list.
@@ -76,7 +76,7 @@ def get_one_string2(m, char_list):
     :param m:
     :param char_list: list
     :return: str
-    '''
+    """
     while True:
         user_input = input(m)
         # test for empty string
@@ -87,13 +87,13 @@ def get_one_string2(m, char_list):
         user_input = user_input.strip()
         user_input = user_input.upper()
         user_input = user_input[0]
-        # test if the prepared user of input is in the list that has been passed, via the parametre
+        # test if the prepared user of input is in the list that has been passed, via the parameter
         if user_input in char_list:
             # end loop by finishing the function
             return user_input
         else:
             # once error message has been printed the loop will rerun
-            print("Your input is not part of the acceptable list, please reenter.")
+            print("That is not a valid option, please reenter.")
 
 
 def validate_string(m, min, max):
@@ -126,6 +126,8 @@ def validate_number(m, min, max):
             return user_input
 
 if __name__ == "__main__":
+    option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "Q"])
+    another_pizza = get_one_string2("Would you like to order another pizza? (y/n)-> ", ["Y", "N"])
     #name = validate_string("enter your name", 3, 10)
     #print(name)
 

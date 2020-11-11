@@ -248,7 +248,6 @@ def cancel(olist):
         if input == "Y":
             olist.clear()
             print("Your order has been cancelled.")
-            print("Welcome to Pizza Time! Feel free to start your order!")
             return True
         elif input == "N":
             print("Your order has not been cancelled")
@@ -305,7 +304,7 @@ def menu():
     run = True
     while run is True:
         if new_order is True:
-            "Welcome to Pizza Time. Please place your order by pressing 'O'"
+            print("Welcome to Pizza Time. Please place your order by pressing 'O'")
             new_order = False
         print_menu(my_menu)
         option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "C", "Q"])

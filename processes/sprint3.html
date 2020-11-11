@@ -54,21 +54,31 @@
 			<div class="content">
 
             <h3 id="aim">Aim:</h3>
-            <p>In this sprint I want to fix some of the major problems that occured in sprint 2. Therefore the aim for sprint 3, is create functions to validate integer entrys so the program won't crash when the user is asked to input an integer. 
-            <br> I need to make a function which properly validates the entry of integers, an example of this is the user entering index numbers to select a type of pizza from the list, or entering the quantity of pizza's wanted. An index number out of range will cause a program crash and if the customer wants to order more than 30 pizzas of 1 type of pizza, the entry should request a confirmation that this is what they want to do.
+            <p>In this sprint I want to fix some of the major problems that occured in sprint 2. Therefore the aim for sprint 3, is create functions to validate integer entrys so the program won't crash. 
+            <br> I need to make a function which properly validates the entry of integers, an example of this is the user entering index numbers to select a type of pizza from the list, or entering the quantity of pizza's wanted. An index number out of range will cause a program crash and if the customer wants to order more than 30 pizzas of 1 type of pizza, the entry should request a confirmation that this is what they want to do. The validation function for the quanity of pizza's should asks user to confirm the number of pizza's if it's more than a certain number. If an unexpect entry occurs, then the program should recoginise this and return back to the customer with a error message and a repeat of the question, repeating until the error is resolved.
 </p>
                 
             <br><br>
                 
-            <h3 id="planning">Planning</h3>
-                   <p>The validate integer function asks user to confirm the number of pizza's if it's more than a certain number.
-                elif number is more than max
-                print("Are you sure you want {} pizzas")
-                choice = ("Press enter to continue or any other key to change order")
-                    return number
-                - This ensures user hasn't made any mistakes and if they have they have a second chance at changing it</p>
+                <h3 id="finaloutput">Output: </h3>
+                 <img class="img-responsive" src="assets/img/whoo.png" alt="This is the output for sprint 3">    
+                <p>As you can see if a integer is input which is not valid, the program asks for reentry until a valid answer is entered. Also if a input seems unrealistic, the program will ask for confirmation before storing the information.</p>
                 
-            <br><br>
+                <br><br>
+            <h3 id="planning">Planning</h3>
+                   <img class="img-responsive" src="assets/img/plan3.png" alt="This is the plan for sprint 3">  
+            <br>
+                <p> Evidence of my standups. As sprint 3 was a big sprint I worked on it for many lessons.
+                </p>
+                <div class="col-container">
+                    <div class="col">
+                <img class="img-responsive" src="assets/img/su2.png" alt="This is evidence of my standup">
+                        </div>
+                    <div class="col">
+                <img class="img-responsive" src="assets/img/su3.png" alt="This is evidence of my standup">
+            </div>
+                <br>
+                </div>
                 
             <h3 id="sprintboard">Sprint Board</h3>    
             <img class="img-responsive" src="assets/img/kanban3.png" alt="This is the kanban for sprint 3">    
@@ -76,7 +86,7 @@
                 
             <br><br>   
                 
-            <h3 id="relection">Reflection:</h3> 
+            <h3 id="reflection">Reflection:</h3> 
             <h4> Iterative deicsion for integer validation</h4>
             <p>The purpose of this function is to make sure that every entry of an integer is properly validated and will not be the source of any programming crashes.</p>    
                 
@@ -106,11 +116,7 @@
                  <img class="img-responsive" src="assets/img/option3code1.png" alt="This is the code for option 3">
             <img class="img-responsive" src="assets/img/option3code2.png" alt="This is the code for option 3">
                  <br>
-                <img class="img-responsive" src="assets/img/option3output1.png" alt="This is the output for option 3">
-                
-                
-                <h3 id="finaloutput">Final Output: (screenshot)</h3>
-                <img class="img-responsive" src="assets/img/s3finaloutput.png" alt="This is the output for sprint 3">
+
                 
                 
                 <br>
@@ -121,28 +127,31 @@
                 <br> 
                 Option 3 does the same thing as option 2 in a more efficient way. As it get the same thing done, than option 2, with less code. When the program has to go run through less code, the program will run better. It is also better for future proofing because certain things like error messages only need to get changed in one place instead of multiple places. However a big downside of this function is that it is very complex and hard to understand. Therefore, if I had to change something to do with this function in the future it would take a long to procress what to change, even with comments.  
                 <br>
-                I am deciding between option 2 and 3, as the feature of being able to confirm the pizza's is crucial to my program. I have chosen option 2, as even though it ca be seen as less efficient than option 3, it is easier to understand to any coder and would therfore be more efficient in the long term.
+                I am deciding between option 2 and 3, as the feature of being able to confirm the pizza's is crucial to my program. I have chosen option 2, as even though it can be seen as less efficient than <b>option 3</b>, it is easier to understand to any coder and would therfore be more efficient in the long term.
                 </p>  
                 
-                
-             
-                
-               
+                <br>
                 
                 
-                
-                <br><br><br><br>
-                
+                 <h3> Testing Plan:</h3>
+        
+                 <img class="img-responsive" width=500 src="assets/img/test3.png" alt="This is the testing plan for sprint 3">    
+                <br>
+            
                 
                 
                 <p><b>Problems to fix:</b></p>
-                <p>I still have some problems from last sprint</p>
+                <p> All the testing situation's I tested ended up without errors (none not already known about). I made sure to input a wide variety of inputs, expected as well as unexpted. The program retured the right error messages when the input was too big/low. For validate_index and validate_quantity, you can see the inputs I tested above in the testing plan photo. I tested these validation function in my testing file as well as after i incorporated into my main file. You can see from the output screenshot, the function was working properly as error messages were justified and the program always ended up with a valid answer.</p>
                 
-            <br><br>  
+            <br>
              
 
-                
-                
+                <h3>Final Reflection:</h3>
+                <p>I still have some problems from last sprint like validating string inputs, which is the very next thing i will work on. However, after that I would like to calcuate pizza prices and print them for the customer. After working on this on this strint I realised how exact you have to be in the code to make sure the function does what you want it to do and allow appropriate inputs as well as disallowing inappropriate inputs. After learning this, it has improved the quality of my final input as I have put more work into making sure the program won't crash.
+                <br>
+                    <br>
+                    I realise that using aglie processes in the form of sprints, I can reflect after each sprint and see what task/feature is important to work on next. By using sprints and reflecting, I was able work towards a better outcome. As if I left testing all to the end, it would be difficult and overwheling to add validation functions then.
+                </p>
             
 
 			

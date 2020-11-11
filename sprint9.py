@@ -368,52 +368,37 @@ def finalise(olist, s, d):
     totalcost = 0
     run = True
     while run is True:
-        # tests the length of the order list and customer details list
-        # checks that there is a order to finalise before continuing
-        # # get customer to order/enter details if they haven't already
-        if len(olist) == 0:
-            print("Your order is empty, please order!")
-            # back to main menu
-            return None
-        elif len(d) == 0:
-            print("You have not completed your details")
-            message = "Do you still want to finalise your order? (y/n) -> "
-            confirm = get_one_string2(message, ["Y", "N"])
-            if confirm == "N":
-                return None
-            s = details(d)
-            # re-loop through
-            continue
-        else:
-            # sum the total cost with pizza order costs and service fee
-            for i in range(0, len(olist)):
-                totalcost += olist[i][2]
-            totalcost += s
-            # print customer details
-            print_details(d, True)
-            print(50 * "-")
-            # print the ordered pizza's
-            # the second argument is set to False so part of the function doesn't run
-            review_order(olist, False)
-            print(50 * "-")
-            output = "Service charge ={:11} ${:<15.2f}".format(" ", s)
-            print(output)
-            gst = totalcost * 0.15
-            output = "GST(included):{:13} ${:<15.2f}".format(" ", gst)
-            print(output)
-            output = "Total Cost: {:15} ${:<15.2f}".format(" ", totalcost)
-            print(output)
-            message = "Are you sure you want to confirm this order? (y/n) -> "
-            confirm = get_one_string2(message, ["Y", "N"])
-            if confirm == "Y":
-                # clears the current customer's order and details to prepare for a new order
-                olist.clear()
-                d.clear()
-                print("Thank you for ordering at Pizza Time :)")
-                return True
-            if confirm == "N":
-                print("Your order is not finalised")
-                return False
+        # sum the total cost with pizza order costs and service fee
+        for i in range(0, len(olist)):
+            totalcost += olist[i][2]
+        totalcost += s
+        # print customer details
+        print_details(d, True)
+        print(50 * "-")
+        # print the ordered pizza's
+        # the second argument is set to False so part of the function doesn't run
+        review_order(olist, False)
+        print(50 * "-")
+        output = "Service charge ={:11} ${:<15.2f}".format(" ", s)
+        print(output)
+        gst = totalcost * 0.15
+        output = "GST(included):{:13} ${:<15.2f}".format(" ", gst)
+        print(output)
+        output = "Total Cost: {:15} ${:<15.2f}".format(" ", totalcost)
+        print(output)
+        message = "Are you sure you want to confirm this order? (y/n) -> "
+        confirm = get_one_string2(message, ["Y", "N"])
+        if confirm == "Y":
+            # clears the current customer's order and details to prepare for a new order
+            olist.clear()
+            d.clear()
+            print("Thank you for ordering at Pizza Time :)")
+            return True
+        if confirm == "N":
+            print("Your order is not finalised")
+            return False
+
+
 
 
 def menu():

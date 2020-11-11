@@ -53,11 +53,22 @@ def print_indexlist(plist):
 
 
 def duplicate(olist, p):
-    print("d")
+    """
+    Checks customer order for duplicates.
+
+    Searches through the customer order for like values
+    If a duplicate is found, an option is given to the customer
+    to update or to make no further changes.
+    :param olist: list (user's ordered pizza's and quantities are added to this list)
+    this is a multidimensional list of [int, str]
+    :param p: str (pizza type - corralating to the index number the customer entered)
+    :return: Bool
+    """
     for i in range(0, len(olist)):
         # checks to see if the pizza type entered is one of a pizza already ordered
         if p is olist[i][0]:
-            message = "You have already ordered {} of this pizza type, would you like to change the quantity ".format(olist[i][1])
+            message = "You have already ordered {} of this pizza type, would you like to change the quantity? -> (Y/N)" \
+                      " ".format(olist[i][1])
             choice = get_one_string2(message, ["Y", "N"])
             if choice is "Y":
                 message = "How many {} pizzas would you like to order?: ".format(olist[i][0])
@@ -102,9 +113,9 @@ def ordering(olist, plist):
         chosen_type_pizza = plist[type_pizza][1]
         scan = duplicate(olist, chosen_type_pizza)
         # scan can return true, false or None
-        # if reuturn from scan is true, it prints the dash so it can go loop through again
+        # if return from scan is true, it prints the dash so it can go loop through again
         if scan is True:
-            print(100 * "-")
+            print(100 * ".")
         # if no duplicate is found, then continue on with order
         elif scan is False:
             return None
@@ -133,6 +144,8 @@ def ordering(olist, plist):
 def review_order(olist, o):
     """
     Print all of the pizza's and the quantities that have been ordered so far.
+
+    Prints the type, cost and quantity in customer order.
 
     :param olist: list (user's ordered pizza's and quantities are added to this list)
     this is a multidimensional list of [int, str]
@@ -201,7 +214,6 @@ def update(olist, plist):
                 ("E", "Exit (Go Back to Main Menu)")
             ]
             available_options = ["C", "D", "A", "E"]
-        print(50 * "-")
         # print out the update menu options for the user using a loop (using option letter and option description)
         for i in range(0, len(update_order)):
             # get the menu options from the multidimelsional list 'update_order'
@@ -210,7 +222,7 @@ def update(olist, plist):
         # asks user what options they want to chose
         option = get_one_string2("What option would you like? : ", available_options)
         if option == "C":
-            print(50 * "-")
+            print(60 * ".")
             # print out order so far
             review_order(olist, False)
             print("Change Order Quantity:")
@@ -228,9 +240,8 @@ def update(olist, plist):
             olist[item][1] = update_quantity
             # update cost for each added pizza order
             olist[item][2] = plist[item][0] * update_quantity
-            print(50 * "=")
         elif option == "D":
-            print(50 * "-")
+            print(60 * ".")
             # print out order so far
             review_order(olist, False)
             print("Delete a Pizza Order:")
@@ -243,24 +254,22 @@ def update(olist, plist):
             m = "Are you sure you want to remove all {} pizzas in the order? (y/n) ->".format(olist[delete_item][1])
             confirmation = get_one_string2(m, ["Y", "N"])
             if confirmation == "Y":
+                print("You have deleted all {} pizza's off your order".format(olist[delete_item][0]))
                 # delete list, which correlates to the selected pizza, inside the multidimentional list
                 olist.pop(delete_item)
                 # prints out order so far, without the deleted pizza
                 review_order(olist, False)
-                print("You have deleted all {} pizza's off your order".format(olist[item][0]))
             elif confirmation == "N":
                 print("Your order has not been updated")
                 print("Here is the update menu:")
             else:
                 print("Validation Error 303")
-            print(50 * "=")
         elif option == "A":
-            print(50 * "-")
+            print(60 * ".")
             # calls the order function so the user can add more pizzas
             ordering(olist, plist)
-            print(50 * "=")
         elif option == "E":
-            print(50 * "-")
+            print(60 * ".")
             print("You will now return back to the main menu")
             return None
         else:
@@ -278,13 +287,13 @@ def cancel(olist):
     """
     run = True
     while run is True:
+        print(60*"*")
         message = "Are you sure you want to cancel your order? (y/n) -> "
         input = get_one_string2(message, ["Y", "N"])
         # return False to the main function so the loop in the main function repeats
         if input == "Y":
             olist.clear()
             print("Your order has been cancelled.")
-            print("Welcome to Pizza Time! Feel free to start your order!")
             return True
         elif input == "N":
             print("Your order has not been cancelled")
@@ -380,7 +389,7 @@ def print_details(d, o):
     for i in range(len(d)):
         output = "{:20} : {:20}".format((d[i][0]), d[i][1])
         print(output)
-    print(50 * "-")
+    print(60 * ".")
 
 
 def finalise(olist, s, d):
@@ -425,11 +434,11 @@ def finalise(olist, s, d):
             totalcost += s
             # print customer details
             print_details(d, True)
-            print(50 * "-")
+            print(60 * "-")
             # print the ordered pizza's
             # the second argument is set to False so part of the function doesn't run
             review_order(olist, False)
-            print(50 * "-")
+            print(60 * "-")
             output = "Service charge ={:11} ${:<15.2f}".format(" ", s)
             print(output)
             gst = totalcost * 0.15
@@ -456,6 +465,8 @@ def menu():
     Loop to run the main option menu.
 
     This is the starting function for the programme.
+    It stores customer details and pizza lists.
+    It has a menu of options available to to user
 
     :return: None
     """
@@ -505,6 +516,7 @@ def menu():
     run = True
     while run is True:
         if new_order is True:
+            print("." * 60)
             print("Welcome to Pizza Time. Please place your order by pressing 'O'")
             # should i also put order = [] here?
             service_charge = 0

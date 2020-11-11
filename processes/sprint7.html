@@ -44,7 +44,6 @@
 			<div class="nav-bar">
 				<ul class="nav">
 					<li><a href="#aim">Aim</a></li>
-					<li><a href="#finaloutput">Final Output</a></li>
 					<li><a href="#planning">Planning</a></li>
                     <li><a href="#sprintboard">Sprint Board</a></li>
                     <li><a href="#reflection">Reflection</a></li>
@@ -53,29 +52,95 @@
 			</div>
 			<div class="content">
 
-            <h3 id="aim">Aim:</h3>
-            <p>To make a basic programme to print out the contents of the fruit bowl and has a function</p>
+          <h3 id="aim">Aim:</h3>
+            <p>To bulid a function which enables the customer to cancel their entire order, if the customer confirms their choice.</p>
                 
-            <h3 id="finaloutput">Final Output: (screenshot)</h3>
-                <img class="img-responsive" src="assets/img/s1finaloutput.png" alt="This is the output for sprint 1">
-            
-            <br><br>
-                
+            <br>
             <h3 id="planning">Planning</h3>
-                
+                <img class="img-responsive" src="assets/img/plan7.png" alt="This is the plan for sprint 7">    
                 
             <br><br>
                 
             <h3 id="sprintboard">Sprint Board</h3>    
-            <img class="img-responsive" src="assets/img/kanban1.png" alt="This is the kanban for sprint 1">    
+            <img class="img-responsive" src="assets/img/kanban7.png" alt="This is the kanban for sprint 7">    
                 
                 
             <br><br>   
+                <h3>Iterative Decision</h3>
+                 <div class="col-container">
+                    <div class="col">
+                        <p>Option 1:</p>
+                        <p>This option has all the code for the cancel feature in a  function. Since the code was in a seperate function, to clear the order list i had to use 'olist.clear()' to clear it from the function. If i used 'olist=[]' then the customer order list wouldn't properly clear as it is a list which only esists in the function and is separate from the order list. Essential I would be creating a new list inside this function and declaring it as empty, it's not actually accessing the order list in the main function.  </p>
+      
+                        <img class="img-responsive" src="assets/img/bb.png" alt="This is plan for option 1"> 
                 
-            <h3 id="relection">Reflection:</h3>    
+                   </div>
+                   <div class="col">
+                       <p>Option 2:</p>
+                       <p>This option has all the code for the cancel feature in the main menu. As I was already in the function with the order list, to clear it I can just user 'order=[]'.</p>
+                <img class="img-responsive" src="assets/img/aa.png" alt="This is plan for option 2"> 
+                       <br>
+                   </div>
+                </div>
+                <p><b>Evaluation:</b><br>
+                I decided on <b>Option</b> 1 as it addresses the relevant implication of future-proofing better. This is because if the code is in a seperate function, it is easier to understand where to go in the code if a crash occurs. This is especially important when the scale of the project increases significiantly because the main function will be getting really long. So even though option 1 is a little more complicated, it is the better option.
+                </p>
                 
+                <h3> Testing Plan:</h3>
+                        <img class="img-responsive" src="assets/img/great.png" alt="This is test plan for sprint y"> 
+                <p>This thorough test makes it clear to me that this function is working exactly as planned. In the test I inputed expected and unexpected inputs to make sure the program wouldn't crash. </p>
                 
+                <br>
                 
+                <h3>Problems I encountered:</h3>
+                <p>If the customer confirmed the cancellation of their order, there was no indication on the screen that a new order had begun. This is because the customer is returned to the main menu (with a clear order list), however, the program looks exactly the same as if they denied the cancellation of their order. And to properly check this, the customer would have to go to the review function to check. This is a big probelm because the visibility of system status of the relevant implication of usability is not being meet. To fix this probelm I created a new variable called 'new_order' which if True it would start with a "welcome to Pizzatime message'. To make sure it gets called after the user cancels their order, I made sure to return True if the customer confirms Y and return False if the customer confirms N.
+                </p>
+                
+                 <div class="col-container">
+                    <div class="col">
+                        <p>Before:</p>
+    
+         <img class="img-responsive" src="assets/img/abc.png" alt="This is problem for sprint 7"> 
+                
+                   </div>
+                   <div class="col">
+                       <p>After:</p>
+                       <img class="img-responsive" src="assets/img/pp1.png" alt="This is problem for sprint 7 solution"> 
+                       <br>
+                <img class="img-responsive" src="assets/img/pp2.png" alt="This is problem for sprint 7 solution"> 
+                       <br>
+                   </div>
+                </div>
+             <br>
+                <p>Another problem I had was that it still allowed the customer the option to cancel their order even when there was no order to cancel. To fix this I added a condition statement to only allow the cancel function to run if the order list was more than 0. If the order list is empty and they they try and cancel the order then they will be notifies of these and they will be sent back to the main menu.</p>
+                   <div class="col-container">
+                    <div class="col">
+                        <p>Before:</p>
+    
+         <img class="img-responsive" src="assets/img/0.png" alt="This is problem for sprint 7"> 
+                
+                   </div>
+                   <div class="col">
+                       <p>After:</p>
+                       <img class="img-responsive" src="assets/img/cool.png" alt="This is problem for sprint 7 solution"> 
+                       <br>
+                       <img class="img-responsive" src="assets/img/00.png" alt="This is problem for sprint 7 solution"> 
+                       
+                       
+                       <br>
+                   </div>
+                </div>
+                
+            <h3 id="reflection">Reflection:</h3> 
+                <p>This was just a quick function as it was pretty straight forward to plan, bulid and test. Sprint 7 works, so the customer can now cancel their order if they chose option C in the main menu. To finally cancel it, they need to confirm their deision. It was through the testing of this porgram that I realised that i needed to have a barrier between anyone trying to cancel the order, so you can only cancel your order if you have something in your order.</p>
+             
+                <p> I have decided that I need to complete the next task in my backlog which is to make sure the user enter's their details. This is the next important feature needed for a pizza ordering program.</p>
+                
+                <p>Clearing the list was a big difficulty as you have to use different python commands depending on where in the code you are. I learnt that using 'order=[]' will only clear a list if the list is in the same function. While, 'order.clear()' is the command that is needed to access a list from another function and clear it properly. This has taught me that there is a limit of what you can do with a parameter. For instance, if you assign a parameter to a new value (e.g. empty list) this cuts the line between the two functions and now the parameter is not connected to the original/intended list. Learning about the difficulties of changing/deleting values has made me more aware about how the program works in general. </p>
+        
+
+
+            
             <br><br>  
         
             

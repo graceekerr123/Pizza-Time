@@ -53,8 +53,8 @@
 			</div>
 			<div class="content">
 
-            <h3 id="aim">Aim:</h3>
-            <p></p>
+            <h3 id="aim">Aim: </h3>
+            <p>To calculate the price of each pizza order as well as the total order, and print it when the customer reviews the order.</p>
                 
             <h3 id="finaloutput">Final Output: (screenshot)</h3>
                 <img class="img-responsive" src="assets/img/s5finaloutput.png" alt="This is the output for sprint 5">
@@ -62,6 +62,7 @@
             <br><br>
                 
             <h3 id="planning">Planning</h3>
+                <img class="img-responsive" src="assets/img/s5pan.png" alt="This is the plan for sprint 5">
                 
                 
             <br><br>
@@ -72,16 +73,95 @@
                 
             <br><br>   
                 
-            <h3 id="relection">Reflection:</h3>    
+            <h1 id="redlection">Reflection:</h1>    
                 
+                <h3>Problems I encountered:</h3>
+                
+                <p>The main problem I encountered was that I previously had the price of the pizza's as strings. This lead to many errors and crashes as I couldn't properly calculate the cost as strings are not able to be multipled/added/subtracted. To fix this I changed the prices to floats (numbers) so they could be treated as numbers, which allowed my code to work. In theory, I changed the "18.5" to 18.5. Overall, it was a bad idea from the beginning to have the price as a string as there was no way any calculation would've worked. Since I tested this function indivually in sprint 5, I was able to change the prices to floats so total cost could be calculated properly.
+                
+                </p>
+                <p></p> 
+               <div class="col-container">
+                    <div class="col">
+                        <p>Before:</p>
+                        <img class="img-responsive" src="assets/img/s1p10.png" alt="This is a problem I found while testing for sprint 5"> 
+                        <br>
+                <img class="img-responsive" src="assets/img/s5p1.png" alt="This is a problem I found while testing for sprint 5"> 
+                
+                   </div>
+                   <div class="col">
+                       <p>After:</p>
+                <img class="img-responsive" src="assets/img/s5p12.png" alt="This is a problem I found while testing for sprint 5"> 
+                       <br>
+                        <img class="img-responsive" src="assets/img/oo1.png" alt="This is a problem I found while testing for sprint 5"> 
+                       
+                   </div>
+                </div>
+                <br>
+                <p>I had 'order_cost = 18.5 * quantity_pizza'. This is a problem because gormet pizza's were different prices at $21.50. Also, if the pizza prices were going to change in the future, it would not be easy to update. For the first couple of tests I didn't notice this was a problem as I only ordered the standard pizza's. I fully realised how big of an issue it was when I ordered a gormet pizza ($3 more than a standard pizza) as it made the order cost completely wrong, which ended up making the totalcost wrong too. To fix this I had to find the cost of the exact pizza the customer ordered. I did this by using 'cost = plist[type_pizza][0]' which accessed the pizza list to find the correlating price to the type of pizza ordered. Once I had a value for cost (for the individual pizza either 18.5 or 21.5) I could accurately calculate the cost for a single pizza order using 'order_cost = cost * quantity_pizza'.</p>
+                
+                <br>
+                 <div class="col-container">
+                    <div class="col">
+                        <h3>Before:</h3>
+    
+                        <img class="img-responsive" src="assets/img/okay.png" alt="output for sprint 5">
+                            </div>
+                
+                    <div class="col">
+                        <h3>After:</h3>
+        
+                        <img class="img-responsive" src="assets/img/okay2.png" alt="This is a problem I found while testing for sprint 5">
+                    </div>
+                </div>
+                
+                <br><br>
+                
+                <p>When a customer who hasn't ordered anything, tries to review their non-existent order, after the encouraging message to order the programme prints out part of the summary of pizza's ordered anyway. This is a problem as it would be confusing to the customer and theis information is redunant as if the customer hasn't ordered, then they wouldn't have a final cost or quantity. I need to find a way that the last part of the review function is conditional so it will only print if the customer has ordered something. </p>
+                
+                <img class="img-responsive" src="assets/img/s5p3.png" alt="This is a problem I found while testing for sprint 5"> 
+                <br>
+                <br><br>
+                
+                <h3>User Story</h3>
+                <video class="img-responsive" width="600" controls>
+                                <source src="assets/videos/tommi-sprin5.mov" type="video/mp4">
+                                </video>
+                <p>I asked tommi to order some pizza to see how an actual order would take place. At the beginning it was working smoothly but I realised that my program severely lacked the feature of changing one the pizza order. In this instance, Tommi wanted to change the quantity of the of her Pepperoni however I had no way to accomodate her. This made me realise that an update feature is very important to this program. Although I had planned to work on the get customer details function, I realised that an update function would be more beneficial to customer. This is the reason why I decided to prioritise this feature. </p>
                 
                 
             <br><br>  
-
-                <p>Reflection:
-                - I had 'cost = amount * 18.5'. This is a problem because gormet pizza's were different prices. Also, if the pizza prices were going to change in the future, it would not be easy to update. 
+                
+                 <h3> Testing Plan:</h3>
+        
+                 <img class="img-responsive" width=500 src="assets/img/testp5.png" alt="This is the testing plan for sprint 5">    
                 <br>
-                The prices for the pizza's in the 2d pizza list were string, I could change these to floats (numbers) so I coudl treat these as numbers. It is generally a bad idea anyway to have the price as a string and I wouldn't be able to do any calculations with it. With the prices as floats, I could calculate the total price.
+                
+                <img class="img-responsive" width=500 src="assets/img/p1.png" alt="This is the testing plan for sprint 5">   
+ 
+                <h3> Code Checker:</h3>
+                <p>Every few sprints I would put my code through the 'Python 3 Style Checker'. I put it through and i received29 style issues. Most of these had to do with the character length of each line, docstrings and spaces. </p>
+                <div class="col-container">
+                    <div class="col">
+                        <h3>Before:</h3>
+    
+                        <img class="img-responsive" src="assets/img/okayy1.png" alt="code checker">
+                            </div>
+                
+                    <div class="col">
+                        <h3>After:</h3>
+        
+                        <img class="img-responsive" src="assets/img/okayy2.png" alt="code checker">
+                    </div>
+                </div>
+                
+<br>
+                <h3>Reflection: </h3>
+                <p> I made a couple of mistakes while completing this sprint; having strings for the prices instead of floats and using the standard cost of 18.5 for everything. However, due to the fact I was trialling and testing this component before incorporating it into the main program, I was able to catch all of these mistakes before they made my main crash. Testing this sprint made sure that all my costs in the final outcome were accurate, essential for a pizza ordering program. When testing my program when implemented in the main function, I found no problems. I then commited this sprint to Github.
+                    <p> I'm happy with the sucess of this sprint as I was able to make sure that the total_quantity and total_cost were calculated every time the review function is called, this means that if the user orders pizza's a couple of seperate times, the total_cost and total_quantity will still be accurate.
+                </p>
+                <p>However, I haven't calculated GST yet, but I intend to do this in a later sprint. (this ended up being sprint 9). What am I going to focus on next? As i said before I will add the update feature, which I recently founf out was very important from Tommi's user test.
+                
                 </p>
                
                

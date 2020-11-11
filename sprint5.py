@@ -1,11 +1,10 @@
 """This is a pizza ordering program."""
 # import validation functions from another file
-from validationsoption2 import get_one_string2, validate_quantity, validate_index
 
 
 def print_list(plist):
     """
-    Print pizza list with no index numbers
+    Print pizza list with no index numbers.
 
     :param plist: list (with name and prices of the pizza)
     this is a multidimensional list of [int, str]
@@ -19,7 +18,7 @@ def print_list(plist):
 
 def print_menu(pmenu):
     """
-    Print out the menu options for the user
+    Print out the menu options for the user.
 
     :param pmenu: list (with option letter and option description)
     this is a multidimensional list of [str, str]
@@ -28,7 +27,8 @@ def print_menu(pmenu):
     print("." * 60)
     # prints out the menu options using a loop
     for i in range(0, len(pmenu)):
-        # gets the menu options from the main function using the parameter 'pmenu'
+        # gets the menu options from the main function using
+        # the parameter 'pmenu'
         output = "{}: {}".format(pmenu[i][0], pmenu[i][1])
         print(output)
 
@@ -53,10 +53,11 @@ def print_indexlist(plist):
 
 def ordering(olist, plist):
     """
-    Get customer's choice of pizza's and number of pizza's they want to order
+    Get customer's choice of pizza's and number of pizza's.
     The request will loop until the user inputs no
 
-    :param olist: list (user's ordered pizza's and quantities are added to this list)
+    :param olist: list (user's ordered pizza's and quantities are added
+    to this list)
     this is a multidimensional list of [int, str]
     :param plist: list (with name and prices of the pizza)
     this is a multidimensional list of [int, str]
@@ -155,19 +156,19 @@ def menu():
     ]
 
     # pizza list
-    actualpizza_list = [
-        ("18.5", "Cheese"),
-        ("18.5", "Pepperoni"),
-        ("18.5", "Ham & Cheese"),
-        ("18.5", "Vege lovers"),
-        ("18.5", "Meatlovers"),
-        ("21.5", "Extreme Vege"),
-        ("21.5", "BBQ Chicken"),
-        ("21.5", "The Italian Pizza"),
-        ("21.5", "Mega Meat Lover"),
-        ("21.5", "Peri Peri Chicken")
-    ]
 
+    actualpizza_list = [
+        (18.5, "Cheese"),
+        (18.5, "Pepperoni"),
+        (18.5, "Ham & Cheese"),
+        (18.5, "Vege lovers"),
+        (18.5, "Meatlovers"),
+        (21.5, "Extreme Vege"),
+        (21.5, "BBQ Chicken"),
+        (21.5, "The Italian Pizza"),
+        (21.5, "Mega Meat Lover"),
+        (21.5, "Peri Peri Chicken")
+    ]
     order = []
 
     run = True
@@ -177,9 +178,9 @@ def menu():
         print(option)
         print("." * 60)
         if option == "P":
-            print_list(practice_pizza_list)
+            print_list(actualpizza_list)
         elif option == "O":
-            ordering(order, practice_pizza_list)
+            ordering(order, actualpizza_list)
         elif option == "R":
             review_order(order)
         elif option == "Q":

@@ -206,10 +206,10 @@ def update(olist, plist):
             confirmation = get_one_string2("Are you sure you would like to remove all {} pizza's from your order? (y/n) ->".format(olist[delete_item][1]), ["Y", "N"])
             if confirmation == "Y":
                 # delete list, which correlates to the selected pizza, inside the multidimentional list
+                print("You have deleted all {} pizza's off your order".format(olist[delete_item][0]))
                 olist.pop(delete_item)
                 # prints out order so far, without the deleted pizza
                 review_order(olist, False)
-                print("You have deleted all {} pizza's off your order".format(olist[item][0]))
             elif confirmation == "N":
                 print("Your order has not been updated")
                 print("Here is the update menu:")
@@ -278,13 +278,13 @@ def menu():
         option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "Q"])
         print("." * 60)
         if option == "P":
-            print_list(practice_pizza_list)
+            print_list(actualpizza_list)
         elif option == "O":
-            ordering(order, practice_pizza_list)
+            ordering(order, actualpizza_list)
         elif option == "R":
             review_order(order, True)
         elif option == "U":
-            update(order, practice_pizza_list)
+            update(order, actualpizza_list)
         elif option == "Q":
             print("Thank you")
             run = False

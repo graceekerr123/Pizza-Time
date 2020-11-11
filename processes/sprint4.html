@@ -54,15 +54,51 @@
 			<div class="content">
 
             <h3 id="aim">Aim:</h3>
-            <p>To</p>
+            <p>In this sprint I want to fix some more of the major problems that occured in sprint 2. Therefore the aim for sprint 4, is create functions to validate string entrys so the program won't crash. 
+            <br> I need to make a function which properly validates the entry of strings. For instance, when the user is asked to pick a letter from the menu as well. Secondary, when the user is asked to enter Y or N when ordering another pizza. Both of these are single character inputs, so that's what my validation function will have to address.</p>
+                <br>
+                <h3>What are the problems I found in sprint 4: </h3>
+                <div class="col-container">
+                    <div class="col">
+                        <p> 1. A integer can be accepted as a string</p>
+                        
+                         <img class="img-responsive" src="assets/img/e1.png" alt="This shows the error for string inputs">  
+                        
+                        
+                <br><br>
+                2. Lowercase letters were not accepted, only uppercase were
+                        
+                       <img class="img-responsive" src="assets/img/e2.png" alt="This shows the error for string inputs">   
+                        
+                    </div>
+                     <div class="col">    
+                3. If a space was added in the input, the program would always see the input as invalid
+                         <img class="img-responsive" src="assets/img/e3.png" alt="This shows the error for string inputs">  
+                         <br><br><br><br>
+                         4. If two letters were inputed then it would be invalid
+                         <img class="img-responsive" src="assets/img/e4.png" alt="This shows the error for string inputs">
+                         
+                         <br><br><br><br><br><br><br><br>
+                    </div>
+                </div>
+                        
                 
             <h3 id="finaloutput">Final Output: (screenshot)</h3>
                 <img class="img-responsive" src="assets/img/s4finaloutput.png" alt="This is the output for sprint 4">
-            
+            <p>As you can see above, a integer will not be accepted and all spaces in the input will be removed (fixing 1 and 3)</p>
+                <img class="img-responsive" src="assets/img/s4finaloutput2.png" alt="This is the output for sprint 4">    
+                    <br>
+                    <img class="img-responsive" src="assets/img/s4finaloutput3.png" alt="This is the output for sprint 4">    
+                    <br>
+                    <img class="img-responsive" src="assets/img/s4finaloutput4.png" alt="This is the output for sprint 4">    
+                    <p>As you can see above lower case inputs are now accepted, and if the customer accidently presses the letter twice, it will take the first entry.</p>
+                    
+                    
             <br><br>
                 
             <h3 id="planning">Planning</h3>
                 
+                <img class="img-responsive" src="assets/img/plan4.png" alt="This is the kanban for sprint 4">   
                 
             <br><br>
                 
@@ -72,30 +108,75 @@
                 
             <br><br>   
                 
-            <h3 id="relection">Reflection:</h3>    
-                <p><b>Problems:</b></p>
-                <p>The price for the pizza in the pizza list was entered as a string with speech marks around it. This meant it couldn't be used in the ______calculator operators______ which meant there was an error when I tried.</p>
+            <h3 id="reflection">Reflection:</h3>  
+                <h3>Iteriative decision for string validation:</h3>
+                <p><b>Option 1:</b></p>
+                <p>This is the more basic string validation function. Some positive points is that it can validate a long input as well as small inputs. When using it in my code I use 'option = get_string("Please enter an option: ->", 1,1)' so it can only be one string, this is a problem as it doesn't accept an input like "RR" when the customer clearly wants the review menu. Another letter not part of the valid answers like "Z" or a number will also be accepted as there is nothing in the function to stop it.</p>
+                 <img class="img-responsive" src="assets/img/4o1.png" alt="This is option 1">    
+                <img class="img-responsive" src="assets/img/4o11.png" alt="This is option 1">   
+            
+                <br>
+                <p><b>Option 2:</b></p>
+                <p>This is a more advanced validation function. Negatively, it can only validate inputs of one character. However, it is very flexible to the situation as I include a char_list as one of my arguments. Therefore when I use this function it will look like this -'option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "Q"])'. This is a huge advantage because only P, O, R, Q will be accepted, making sure that if another letter like Z or a number to be entered, it will ask the user to reenter.</p>
+                 <img class="img-responsive" src="assets/img/4o2.png" alt="This is option 2">    
+                <img class="img-responsive" src="assets/img/4o21.png" alt="This is option 2">    
                 
-                <p>The validate integer function asks user to confidrm the number of pizza's if it's more than a certain number.
-                elif number is more than max
-                print("Are you sure you want {} pizzas")
-                choice = ("Press enter to continue or any other key to change order")
-                    return number
-                - This ensures user hasn't made any mistakes and if they have they have a second chance at changing it</p>
+                
+                <br>
+                  <p><b>Evaluation:</b></p>
+                <p>I chose to use option 2 because it is better suiting to the situations I have, which are both single inputs. At the moment I'm only trying to fix the problems at hand, if other situation occur where I need a string validation for a long string I will reassess. Option 2 fixes more errors that Option 1, e.g. RR will be accepted as R in Option 2 but it will not in Option1.</p
+                
+            <br><br>
                 
                 
+        
+                <p><b>Problems I Encountered::</b></p>
+                <p> A problem that occured that when i entered
+                    
+                    To fix this I added 'user_input = user_input[0]' into the validation function so the function will only take the first letter in the input.
+                </p>
+                <div class="col-container">
+                    <div class="col">
+                        <p>Before:</p>
+    
+                        <img class="img-responsive" src="assets/img/pro1b.png" alt="This is problem">   
+                        
+                            </div>
+                
+                    <div class="col">
+                        <p>After:</p>
+        
+                        <img class="img-responsive" src="assets/img/pro1b1.png" alt="This is problem">   
+                         
+                    </div>
+                </div>
                 
             <br><br>  
                 
-        <p>I had two options: one that had a review section and then a receipt section. The other had the information about the recipt inside the reivew function. I chose option 2 as it was more efficient and that it made more sense, as if no order had been made (there would be no recipt or no order to review) so it would repeat, there's nothing in your order.</p>
-  
+                <h3> Testing Plan:</h3>
+        
+                 <img class="img-responsive" width=500 src="assets/img/testp4.png" alt="This is the testing plan for sprint 3">    
+                <br>
             
-
+                <br><br>
+                
+                
+                <h3>Problems to fix:</h3>
+                <img class="img-responsive" src="assets/img/dub.png" alt="This is problem to fix">   
+                <p>A problem which I found is that the user can order the same pizza multiple times. This is an issue because instead the program should just add to original amount. In the image above we see how the customer was able to order the Cheese Pizza twice. I am adding this to  my backlog, it won't be placed at the top as it's not a prioity right not. It is clear that I need to add more basic functions to the program like a receipt function before I try and fix this duplicate problem.</p>
+                
+                
+        <h3>Final Reflection:</h3>
+            
+<p>At the end, all the testing situation's I tested ended up without errors . I made sure to input a wide variety of inputs, expected as well as unexpted. The program retured the right error messages when the input was unexpected. You can see from the output screenshot, the function was working properly as error messages were justified and the program always ended up with a valid string.
+                <br>
+                I have learnt that validation functions are so important because they prevent many crashes as many things can go wrong when the user is asks to input something. I'm happy with this sprint as I sucessfully validated string inputs. I also found a problem in my code (duplicates occuring) which I will fix sometime in the future.</p>
 			
 			</div>
 			<div class="footer">
-				&copy; Copyright 2015
+				&copy; Copyright 2020
 			</div>
-		</div>
+		
+            </div>
 	</body>
 </html>

@@ -62,60 +62,77 @@
             <br><br>
                 
             <h3 id="planning">Planning</h3>
-                 <img class="img-responsive" src="assets/img/s1plan.png" alt="This is the plan for sprint 1">
+                <br>
+                 <img class="img-responsive" src="assets/img/s2plan.png" alt="This is the plan for sprint 2">
+                <br>
+                <p>Evidence of my standup</p>
+                <img class="img-responsive" src="assets/img/su1.png" alt="This is evidence of my standup">
                 
-            <p><b>Stand Ups:</b><br>
-                To make sure that our class was on track and had a plan for the lesson, during the project we often had a short meeting at t he beginning of class. This meeting consisted of questions of 1. what we have already completed, 2. What we intend to work on today, and 3. what is blocking us for doing our task. This was incredibly helpful for me to manage my project as it allows me to divide tasks into short phases of work e.g. working on one part of the project in one lesson and other part in the next one. I can frequently reassess how I'm working and what is the most important at the present moment. It also allows me to adaptat plans easily, as if I'm consistently reassessing, I can quickly shift my attention to the prioty task.
-                </p>
-                
-            <br><br>
-                
+    
+            <br>
             <h3 id="sprintboard">Sprint Board</h3>    
             <img class="img-responsive" src="assets/img/kanban2.png" alt="This is the kanban for sprint 2">    
                 
                 
             <br><br>   
                 
+                <h3> Testing Plan:</h3>
         
-                
+                 <img class="img-responsive" width=500 src="assets/img/test2.png" alt="This is the testing plan for sprint 2">    
+                <br>
             
             <h1 id="relection">Reflection:</h1>  
             <p><b>Problems I fixed while working on sprint 2:</b></p>
-            <p>The confirmation message printed out differently than expected.</p>
+            <p>The confirmation message printed out differently than expected. I recognised this to be due to the wrong numbers being inputed into the last square brackets into the statement 'olist[type_pizza][1]'. As if I had the wrong number in the last square bracket it will return with a string/integer from the wrong column (as shown below). To fix it I changed the 0 to a 1. I got this wrong because I forgot that you count the list terms starting from 0 and not 1. This was a good mistake to learn from as it will help me for future sprints.</p>
+                <div class="col-container">
+                    <div class="col">
+                        <p>Before:</p>
                 <img class="img-responsive" src="assets/img/as2p1.png" alt="This is a problem I found while making sprint 2"> 
+                    </div>
+                    <div class="col">
+                        <p>After:</p>
+                        <img class="img-responsive" src="assets/img/s2p1a.png" alt="This is a problem I found while making sprint 2"> 
+                        <br><br>
+                 <br><br><br><br>
+                 <br><br>
+                    </div>
+                
+                
                 <br>
-            <p>Not really sure what went wrong here.</p>
-                <img class="img-responsive" src="assets/img/as2p2.png" alt="This is a problem I found while making sprint 2"> 
                 
-                
-                
-                <br>
-                
-                <p><b>Problems to fix:</b></p>
-                <p> the indexes would start at 0 which is confusing for a standard human. </p>    
+                <p><b>Problems I Encountered:</b></p>
+                <p> The first problem I encountered was that the indexes start at 0 (which is standard in the digital tech world) but it is confusing for the general public. I hope in one of my later sprint's I can fix this. However, as this is not a major problem since it's not cause an program crashes, i don't need to priotise fixing it at the moment. </p>    
                 <img class="img-responsive" src="assets/img/s2p2.png" alt="This is a problem I found while testing for sprint 2">  
                 <br>
-            <p>If the user enters a quantity of 0 for a pizza, it programme allows this even when they aren't ordering anything.</p>
+            <p>If the user enters a quantity of 0 for a pizza, it programme allows this even when they aren't ordering anything. This indicates that the boundraies on the quantity_pizza's get_integer are no existant. This is a huge issue at the moment because at the moment a customer will be able to order 0, or negative pizza's which isn't helpful to the pizza shop. Customer's could also order a huge amount, for example, 1000 pizza's - which is utterly unrealistic and impossible. This issue I'm going to prioritise for the next sprint. I was originally planning to work on calculating total cost of the order for the customer, after testing sprint 2 and finding this urgent problem I've decided that my time would be better spent validating when a integer input is required.</p>
                 <img class="img-responsive" src="assets/img/s2p1.png" alt="This is a problem I found while testing for sprint 2">  
                 <br>
-            <p>When the user accidently enters a string instead of a integer, the programme crashes and no error message that tells the user what went wrongs comes up. </p>
+            <p>When the user accidently enters a string instead of a integer, the programme crashes and no error message appear. If the problem crashes, it's a HUGE problem as it's unfair to the customer when it was probably a mistake. This is another reason why the input of integer's should also be validated - to make sure crashes don't occur when trying to input a integer. This problem I found makes it clear that the program is very fragile and that any unexpected inputs are likely to cause a crash.</p>
                 <img class="img-responsive" src="assets/img/s2p3.png" alt="This is a problem I found while testing for sprint 2"> 
-                <br>
-                <p>The capitalisation of the pizza name is wrong. This is because this is incorrect English language.</p>
-                <img class="img-responsive" src="assets/img/s2p4.png" alt="This is a problem I found while testing for sprint 2"> 
+    
             <br><br>  
-                <p>When the user enters enters in a wrong input (not 'y' or 'n') when asked if they would like to order another pizza, it automatically asks the user for a pizza index. This is a problem because if the user meant to enter 'n' then they will be forced to order more pizza's without an exit. Instead of the 'invalid entry' message coming up, it should've been repeated the question again to allow the user another chance to press the right key.
+                <p> This clearly shows a problem with the 'get_string' function as it allowed for a integer to be entered when only y or n should've been entered. This alerted me that validating string entrys is a very important part of this program and it needed to be deal with quickly (in the next sprint or the one after that). 
+                    When asked if they would like to order another pizza, if the user enters enters in a wrong input (not 'y' or 'n'), although the program says "invalid entry", the program will automatically asks the user for a pizza index. This is a problem because if the user meant to enter 'n' then they will be forced to order more pizza's without an exit. Instead after the 'invalid entry' message coming up, the question should've been repeated again to allow the user another chance to press the right key. After some more indept testing around this point in the program it seems as if the only way to go back to the main menu is pressing 'n', and that any other value entered will lead them to ordering a new pizza. This is a problem with the string validation.
                 </p>
                 <img class="img-responsive" src="assets/img/s2p5.png" alt="This is a problem I found while testing for sprint 2"> 
                 <br>
-                <p>When the user enters in a pizza index that isn't valid (too big or too small), the program doesn't return a error message and instead the program crashes.</p>
+                <p>When the user enters in a pizza index that isn't valid (smaller or larger than the lenth of the pizza list), the program doesn't return a error message and instead the program crashes. Therefore, if a index that didn't exist (higher than 5) was returned, the the program would crash. This is a huge problem with 'get_integer' as it should let the customer know that there was a mistake and allow them a chance to reenter. This problem is big as it causes a system crash and there's a high possibility of this occur. This is why this is one of my top prioties to validate integer inputs properly. </p>
             <img class="img-responsive" src="assets/img/s2p6.png" alt="This is a problem I found while testing for sprint 2"> 
 
-			
+                <h3>Final Reflection:</h3>
+                <p>From this testing process I learned how important inputs from the user are to consider. Because usually when planning and buliding my code I'm only thinking of expected inputs, however this made me realise how likely unexpected inputs from the user are. In the future I want to consider all unexpected inputs while doing my planning and code writing. Unexpected inputs could be from the user not understanding completely what to put in, unclear questions in the code output, or from their fingers slipping on the keyboard. <br><br>
+                    After testing sprint 2 thoroughly, I can see that inputs for integers and strings are in dire need to be validated to make sure the system doesn't crash and give error messages accordingly. This has made my plan for the next sprints to solely focus on the integer and string valiations as they are the highest prioity at the moment. I decided this because calculating a total cost for the customer isn't as important when there's a chance that the program could crash way before they have a chance to finish their order. To stop errors (like the ones I encountered when the customer is able to enter 0 or negative pizza's) which sprout from undetermined boundaries, I will makes sure the valiation function will provide good limits and boundaries to the user's inputs.
+                <br><br>
+                I am overall proud of what was accomplished in this sprint, espeically while utilising the loop funciton to make ordering the pizza a smooth experience.
+                <br><br>
+                I would prefer the program to have cost's calculated and to have a nicely ordered indexes for the pizza menu, however, I can recognise that these aren't my priorities at the moment.
+                </p>
+                
 			</div>
 			<div class="footer">
 				&copy; Copyright 2015
 			</div>
 		</div>
+        </div>
 	</body>
 </html>

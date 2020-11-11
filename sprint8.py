@@ -314,10 +314,6 @@ def details(d):
         suburb = validate_string(message, 3, 15)
         message = "Please enter your phone number: (XXX XXX XXXX) -> "
         phone_number = validate_string(message, 10, 12)
-        print(street)
-        print(street_number)
-        print(suburb)
-        print(phone_number)
         pickup_information = [("Service", receive),
                               ("Name", name),
                               ("Street", "{} {}".format(street_number, street)),
@@ -402,7 +398,7 @@ def menu():
     run = True
     while run is True:
         if new_order is True:
-            "Welcome to Pizza Time. Please place your order by pressing 'O'"
+            print("Welcome to Pizza Time. Please place your order by pressing 'O'")
             service_charge = 0
             new_order = False
         print_menu(my_menu)

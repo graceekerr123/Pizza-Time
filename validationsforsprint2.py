@@ -119,7 +119,7 @@ def validate_integer(m, min, max, minerror, maxerror):
         else:
             return user_input
 
-#m, min, max, minerror, maxerror, tf
+
 def validate_integer2(m, min, max, minerror, maxerror, tf):
     """
     To ensure a valid integer is returned

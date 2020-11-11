@@ -43,8 +43,7 @@
 			</div>
 			<div class="nav-bar">
 				<ul class="nav">
-					<li><a href="#aim">Aim</a></li>
-					<li><a href="#finaloutput">Final Output</a></li>
+                    <li><a href="#aim">Aim</a></li>
 					<li><a href="#planning">Planning</a></li>
                     <li><a href="#sprintboard">Sprint Board</a></li>
                     <li><a href="#reflection">Reflection</a></li>
@@ -54,26 +53,109 @@
 			<div class="content">
 
             <h3 id="aim">Aim:</h3>
-            <p>To make a basic programme to print out the contents of the fruit bowl and has a function</p>
+            <p>To bulid a function that requests customer's details. To also create a function that can print out these details in a nice layout. A service option must be given where the customer is asked to pick between delivery and pick up. There is a delivery cost that must be added to the total cost in the receipt.</p>
                 
-            <h3 id="finaloutput">Final Output: (screenshot)</h3>
-                <img class="img-responsive" src="assets/img/s1finaloutput.png" alt="This is the output for sprint 1">
-            
-            <br><br>
+           <br>
                 
             <h3 id="planning">Planning</h3>
                 
-                
+                <img class="img-responsive" src="assets/img/plan8.png" alt="This is the plan for sprint 8"> 
             <br><br>
                 
             <h3 id="sprintboard">Sprint Board</h3>    
-            <img class="img-responsive" src="assets/img/kanban1.png" alt="This is the kanban for sprint 1">    
+            <img class="img-responsive" src="assets/img/kanban8.png" alt="This is the kanban for sprint 8">    
+                
+            <br><br>  
+                <h3>Iterative Decision:</h3>
+                <img class="img-responsive" src="assets/img/id.png" alt="This is the  for sprint 8">   
+                <br><br>
+                
+                <h3>Error's I encountered</h3>
+                <p>I made an error while making this function when sending the details from the detail's function to the detail's list in the main function. This issue occured because I appended the detail's list called 'pickup_information' instead of extending it. I used append in the first place because that was the command I was familiar with as it was what I used to change pizza quantities and pirces. Appending is only used to change one part of a list, while extend is used to add all parts of the list. To fix the probelm of using append, I just switched the code to say extend. The details informationw as needed to be sent back to the main function to change the detail's list, but it's also needed to be sent to the print_details function.
+                    </p>
+                <img class="img-responsive" src="assets/img/ppp.png" alt="This is the kanban for sprint 8">  <br>  
+                <img class="img-responsive" src="assets/img/fix.png" alt="This is the fix for sprint 8">    
+                
+                <br>
+                <br>
+                <h3>Problems while testing unexpected inputs:</h3> 
+                <img class="img-responsive" src="assets/img/plann.png" alt="This is the problems for sprint 8">    
+                <br>
+                <img class="img-responsive" src="assets/img/plannn.png" alt="This is the code problems for sprint 8">    
+                <br>
+                <p>As you can see there were 3 errors I found while testing unexpected inputs. 
+                    <br> 1. A street name can be inputed with only 1 character. This is a problem as street names are at least 3 characters. To fix this I changed the min number of character to be 3, instead of 1. I made a validate_string function for this sprint because previosuly i only had a valdation function to validate string inputs of 1 character. <br>
+                    2.The second error found was that when the user is asked for a suburb, they are also able to input 1 character inputs. This is impossible as suburbs have to complete words and the shortest proper word is 3 letters. To fix this problem I changed the min length it has to be to 3 instead of 1.
+                    <br>
+                    3. Also 'abcdefghijk' was accepted as a phone number. This is clearly not a phone number. I recognise this as a problem, but it is not my priotity as it is only one very small part of my project. I hope to come back later with a solution. The reason why this occured is because I used validate_string to validate this input. I decided not ot use my validate_integer function as it wouldn't have allowed spaces in the input and, in my opinion, it would've caused more problems.
+                
+                </p>
+                <p>This is the fix for problem 1</p>
+                <img class="img-responsive" src="assets/img/fix1.png" alt="This is the fix for sprint 8">   
+                <br>
+                <p>This is the fix for problem 2</p>
+                <img class="img-responsive" src="assets/img/fix2.png" alt="This is the fix for sprint 8">   
+                <br>
+                
+                <h3> Test of Pick Up:</h3>
+                <p>As you can see, the pick up option is perfect as it asks the user to reenter if any unvalid inputs occur.</p>
+                <img class="img-responsive" src="assets/img/pu.png" alt="This is sprint 8">   
                 
                 
-            <br><br>   
                 
-            <h3 id="relection">Reflection:</h3>    
+                <h3>Problem I encountered:</h3>
+                <p>A problem that occured was that when canceling the order, it only cancels the order and not the details that are stored. So if I were to cancel a order with details loaded and then start a new order my details would already be there. This is a problem if the next person that tries to order has different details, which is most likely. It would work alright if the customer rememebers to put in details before finalising their order. However, if the user doesn't input their details, the program will think they have their details and finalise their order with the wrong details.</p>
+                <p>To fix this I decided that the cancel function should also delete the details.</p>
+                <p>Problem Fixed:</p> 
+                <img class="img-responsive" src="assets/img/fii.png" alt="This is sprint 8">   
+                <br>
+                 <img class="img-responsive" src="assets/img/fiii.png" alt="This is sprint 8">   
+                <br>
+                 <img class="img-responsive" src="assets/img/code.png" alt="This is sprint 8"> 
+                <p>However, upon finding the solution to this problem, I was thinking about the whole idea of the cancel function. At the moment the customer is only allowed to cancel their order if they have something in their order. Then i thought about the possibility of a person who has just filled out their details, and has not ordered yet, and wants to cancel their order. I realised that this may be a bit consfusing to the customer. This is because the conditions on the cancel function wouldn't allow this person to cancel their order.</p>
+                <p>Problem:</p>
+                <img class="img-responsive" src="assets/img/a.png" alt="This is sprint 8"> 
+                <br>
+                <img class="img-responsive" src="assets/img/s.png" alt="This is sprint 8">   
                 
+                <p>Problem Fixed:</p> 
+                <p>To fix this problem I added another conditional statement in the code in the main menu. This allows the program to run the update function when the is nothing in the order, but information in the details list. I also had to change what was printed in the cancel function so it would say it's deleting the details when the situation occurs. I did this by adding another argument to the update function, which was either the string "order" or "details" which I put in the print code line.</p>
+                <br>
+                <p>New Code:</p>
+                 <img class="img-responsive" src="assets/img/d.png" alt="This is sprint 8">   
+                <br>
+                 <img class="img-responsive" src="assets/img/f.png" alt="This is sprint 8"> 
+                <br>
+                <p>New Output:</p>
+                <br>
+                 <img class="img-responsive" src="assets/img/h.png" alt="This is sprint 8">
+                
+                
+            
+                
+                <br><br>
+                <h3>Problem to fix later:</h3>
+                <img class="img-responsive" src="assets/img/fi.png" alt="This is sprint 8">   
+                <p> A problem that I found is that the service cost from the details function did not add to the total cost in the review function. I think that this should be fixed in the next sprint where I will finalise the order.</p>
+                
+                <h3>Video of me testing unexpected outputs in the Sprint 8:</h3>
+        <h3>User Story</h3>
+                <video class="img-responsive" width="600" controls>
+                                <source src="assets/videos/sprint8.mov" type="video/mp4">
+                                </video>
+                <p>I ended up with a problem when the user is order over tha max number of pizza's so they are asked to confirm the number. I accidently had 3 arguments in my line of code, instead of 2. I fixed this by taking out the 3rd one. And it worked fine after that. This was a flaw with my code back in Sprint 3/4. This has taught me how important it is to keep on testing all the time as you never know where problems may be.</p>
+                
+                
+                
+            <h3 id="reflection">Reflection:</h3>    
+                
+                <p>This sprint focused on getting and storing the customer details. I created two functions, one to get the details and one to print them out. The details that the program got were extended to the detail's list in my main function. This was important so the information could be stored properly.</p>
+                
+                <p>Another important part of this details function, is making sure that the service charge was correct. To do this I returned 3 if the customer chose the delivery option and I returned 0 if the customer chose the pickup option. Then I had 'service_charge = details(details_list)' which meant I had a variable which I could add to the total cost.</p>
+                
+                <p>The testing was very interesting as there were so many inputs by the user, and a few problems were created. I fixed most of them to the best of my ability. However, I couldn't fix one problem which was the phone number inputs. I hope to work on this problem in the future when I have more time. This really shows how fragile programs are without proper validation functions in place.</p>
+                
+                <p>The last necessary feature to add is the finalise the order feature. I think this is necessary to the code as I will be able to give the user a fully summary of what they have entered and give the customer information about how much GST they're paying. </p>
                 
                 
             <br><br>  

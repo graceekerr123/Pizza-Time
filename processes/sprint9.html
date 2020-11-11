@@ -44,7 +44,6 @@
 			<div class="nav-bar">
 				<ul class="nav">
 					<li><a href="#aim">Aim</a></li>
-					<li><a href="#finaloutput">Final Output</a></li>
 					<li><a href="#planning">Planning</a></li>
                     <li><a href="#sprintboard">Sprint Board</a></li>
                     <li><a href="#reflection">Reflection</a></li>
@@ -54,27 +53,47 @@
 			<div class="content">
 
             <h3 id="aim">Aim:</h3>
-            <p>To make a basic programme to print out the contents of the fruit bowl and has a function</p>
+            <p>To bulid a finalise the order function which will ask user to confirm that they want to complete their order and loop until it's certain at least one pizza and details have been inputed.</p>
                 
-            <h3 id="finaloutput">Final Output: (screenshot)</h3>
-                <img class="img-responsive" src="assets/img/s1finaloutput.png" alt="This is the output for sprint 1">
-            
-            <br><br>
+            <br>
                 
             <h3 id="planning">Planning</h3>
-                
+                <img class="img-responsive" src="assets/img/plan9.png" alt="This is the plan for sprint 9">   
                 
             <br><br>
                 
             <h3 id="sprintboard">Sprint Board</h3>    
-            <img class="img-responsive" src="assets/img/kanban1.png" alt="This is the kanban for sprint 1">    
+            <img class="img-responsive" src="assets/img/kanban9.png" alt="This is the kanban for sprint 9">    
                 
+                <h3>Backlog at the moment</h3>
+                <img class="img-responsive" src="assets/img/kanban91.png" alt="This is the kanban for sprint 9">
                 
             <br><br>   
+                <h3>Problems:</h3>
+                <p>The problem that I found last sprint about the total cost not updating in the review function isn't fixed as it quite complicated. At first, I decided to change the wording, so it makes more sense to the user. I though this was the best use of my time as i believed this would be quiet time consuming. At the end of the sprint I realised this is actually a lot easier than I though, and I actually fixed it. To fix it I just had to make sure I added the argument s (service_charge) to the review function (+ the update function, as I called the review function there as well) and then add s onto the total cost just after the loop used to add up all the pizza order costs up.</p>
+                <p>Before:</p>
+                <img class="img-responsive" src="assets/img/be.png" alt="This is the kanban for sprint 1">    
                 
-            <h3 id="relection">Reflection:</h3>    
+                <p>After: (the first time)</p>
+                <img class="img-responsive" src="assets/img/af.png" alt="This is the kanban for sprint 1">    
+                <p>Final After: Problem Solved </p>
+                <p>As you can see, the total cost is now $21.50 as it added the $3 delivery cost.</p>
+                <img class="img-responsive" src="assets/img/aff.png" alt="This is the kanban for sprint 1"> 
+                <br>
                 
                 
+                <br>
+                
+            <h3 id="reflection">Reflection:</h3>   
+                <h3>Problem's I encountered:</h3>
+            <p>One problem I had that the program would let the user try and finalise their order even when they had no order. This is very bad as although there was no crash, it was messy and not even possible. I had to make sure that if no order had been made that they couldn't finalise the order. As if no order had been made (there would be no recipt or no order to review). I made a conditional statement which is at the beginnign of the loop in the finalise function, which makes the user return to main menu. While doing this I made sure that if the user hadn't filled out their details, that they would have to do that too. If there's something in the order_list, and if the details_list is empty too - it will ask the user if they're sure they want to continue the process. If no, the program will return back to main menu. However, if the customer wan't to continue, it will automatically make the customer carry out the details function. It will also return the service cost as 's'.</p>
+                <img class="img-responsive" src="assets/img/k.png" alt="This is the kanban for sprint 1"> 
+  
+<br>
+                <h3>Final Reflection</h3>
+                <p>I thought that it was finally time to do a finalise the order function. The basis of this feature was to create another option on the menu so the customer could access all the information they have given the program and also add any information they haven't done. </p>
+                
+                <p>It is clear to me that I have fufilled out all the critea necessary for this project. However, I thought it would be useful to fix a hard problem as a extenstion. This made me decide that next sprint I will work on fixing the program so there can't be any duplicates in the order, something I found earlier in sprint 4 and while Nia tested my program.</p>
                 
             <br><br>  
         
