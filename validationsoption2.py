@@ -56,8 +56,8 @@ def validate_quantity(m, min, max, minerror):
             print(minerror)
             continue
         elif user_input > max:
-            sure = get_one_string2("This is a lot of pizza, are you sure you meant to order {} pizzas? (y/n)".format(user_input), ["Y", "N"])
-            if sure == "y":
+            sure = get_one_string2("This is a lot of pizza, are you sure you meant to order {} pizzas? (Y/N)".format(user_input), ["Y", "N"])
+            if sure == "Y":
                 return user_input
             else:
                 print("")
@@ -107,48 +107,3 @@ def validate_string(m, min, max):
             continue
         else:
             return user_input
-
-
-def validate_number(m, min, max):
-    while True:
-        # checks that the input is a integer
-        try:
-            user_input = int(input(m))
-        except ValueError:
-            print("Your entry must be a number. Please reenter.")
-            continue
-        if user_input < min:
-            print("Your entry is too small, it must be at least {}. Please try again.".format(min+1))
-        elif user_input > len(max):
-            print("Your entry is too big, or you have entered {} or less. \n"
-                  "Please try again.".format(max))
-        else:
-            return user_input
-
-if __name__ == "__main__":
-    option = get_one_string2("Please enter an option: ->", ["P", "O", "R", "U", "Q"])
-    another_pizza = get_one_string2("Would you like to order another pizza? (y/n)-> ", ["Y", "N"])
-    #name = validate_string("enter your name", 3, 10)
-    #print(name)
-
-
-    # another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
-    # print(another)
-    #
-    # menu_option = validate_string("Please enter an option: ->", 1, 1)
-    # print(menu_option)
-    #get_one_string2("Please enter item off the menu", ["y", "n"])
-    # get_one_string2("Please enter item off the menu", ["y", "n"])
-    # get_one_string2("Please enter item off the menu", ["y", "n"])
-    #
-    quantity_index = validate_index("Please enter your index", 1, 999, "too small", "too big")
-    # print(quantity_index)
-    #
-    # quantity_pizza = validate_quantity("Please enter your number", 0, 30, "e1")
-    # print(quantity_pizza)
-    #
-    # another = validate_string("Would you like to order another pizza? (y/n)-> ", 1, 1)
-    # print(another)
-    #
-    # another = validate_string("Please enter an option: ->", 1, 1)
-    # print(another)

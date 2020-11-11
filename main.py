@@ -137,7 +137,9 @@ def ordering(olist, plist):
             print(output)
         # request to add more pizza's
         another_pizza = get_one_string2("Would you like to order another pizza? (y/n)-> ", ["Y", "N"])
-        if another_pizza == "N":
+        if another_pizza == "Y":
+            continue
+        elif another_pizza == "N":
             return None
 
 
