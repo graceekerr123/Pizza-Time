@@ -30,20 +30,18 @@ def validate_index(m, min, max, minerror, maxerror):
             return user_input
 
 
-def validate_quantity(m, min, max, minerror):
+def validate_quantity(m, min, minerror):
     """
     To ensure a valid integer is returned (when asked for the quantity of pizza).
 
     tests for inclusive minimum and maximum
-    5 arguments string message int min int max string minor error string max error
+    5 arguments string message int min string minor error string max error
     it will test the user input comprehensively
     the tests will repeat (go through a loop) until the user has entered an appropriate integer
 
     :param m: str
     :param min: int
-    :param max: int
     :param minerror: str
-    :param maxerror: str
     :return: int
     """
     while True:
@@ -55,13 +53,6 @@ def validate_quantity(m, min, max, minerror):
         if user_input < min:
             print(minerror)
             continue
-        elif user_input > max:
-            sure = get_one_string2("This is a lot of pizza, are you sure you meant to order {} pizzas? (Y/N)".format(user_input), ["Y", "N"])
-            if sure == "Y":
-                return user_input
-            else:
-                print("")
-                continue
         else:
             return user_input
 
@@ -97,6 +88,19 @@ def get_one_string2(m, char_list):
 
 
 def validate_string(m, min, max):
+    """
+    To ensure a valid string is returned.
+
+    tests for inclusive minimum and maximum
+    3 arguments string message int min int max
+    it will test the user input comprehensively
+    the tests will repeat (go through a loop) until the user has entered an appropriate string
+
+    :param m: str
+    :param min: int
+    :param max: int
+    :return: Str
+    """
     while True:
         user_input = input(m)
         if len(user_input) < min:

@@ -54,14 +54,14 @@ def print_indexlist(plist):
 
 def duplicate(olist, p):
     """
-    Checks customer order for duplicates.
+    Checks customer order for duplicate values.
 
     Searches through the customer order for like values
     If a duplicate is found, an option is given to the customer
     to update or to make no further changes.
     :param olist: list (user's ordered pizza's and quantities are added to this list)
     this is a multidimensional list of [int, str]
-    :param p: str (pizza type - corralating to the index number the customer entered)
+    :param p: str (pizza type - correlating to the index number the customer entered)
     :return: Bool
     """
     for i in range(0, len(olist)):
@@ -124,7 +124,12 @@ def ordering(olist, plist):
             # get quantity of the pizza
             message = "How many of the {} pizza would you like to order: ->".format(chosen_type_pizza)
             error_one = "Sorry you must order at least one pizza, please order a quantity bigger than 0"
-            quantity_pizza = validate_quantity(message, 1, 30, error_one)
+            quantity_pizza = validate_quantity(message, 1, error_one)
+            if quantity_pizza > 30:
+                m = "That's a lot of pizza, did you mean to order {} pizzas? (Y/N) ->".format(quantity_pizza)
+                sure = get_one_string2(m, ["Y", "N"])
+                if sure == "N":
+                    continue
             # collect cost from the pizza list
             cost = plist[type_pizza][0]
             # calculate cost of the pizza order
